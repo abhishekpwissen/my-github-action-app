@@ -24,10 +24,10 @@ steps:
 
   - name: Build Angular App
     run: npm run build
-    
+
   - name: Deploy to gh pages
     run: |
-      npx angular-cli-ghpages --dir=dist/your-angular-app
+      npx angular-cli-ghpages --dir=dist/my-github-action-app
     env:
       CI: true
       GH_TOKEN: ${{ secrets.GH_TOKEN }}       
