@@ -27,7 +27,7 @@ steps:
 
   - name: Deploy to gh pages
     run: |
-      npx angular-cli-ghpages --dir=dist/my-github-action-app
+      npx angular-cli-ghpages --dir=dist/my-github-action-app/browser
     env:
       CI: true
       GH_TOKEN: ${{ secrets.GH_TOKEN }}       
