@@ -26,12 +26,12 @@ jobs:
 
       # Step 4: Build the Angular app
       - name: Build Angular App
-        run: npm run build --configuration production
+        run: npm run build
 
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         run: |
-          npx angular-cli-ghpages --dir=dist/my-github-action-app
+          npx angular-cli-ghpages --dir=dist/my-git-action-app
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
