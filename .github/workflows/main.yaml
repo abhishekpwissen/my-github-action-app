@@ -1,25 +1,37 @@
 name: Build and Deploy Script
+
 on:
   push:
     branches:
       - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
-steps:
-  - name: Checkout Repository
-    uses: actions/checkout@v2
-  - name: Adding Node.js
-    uses: actions/setup-node@v2
-    with:
-      node-version: 20
-  - name: Install Dependencies
-    run: npm install
-  - name: Build Angular App
-    run: npm run build
-  - name: Deploy to gh pages
-    run: |
-      npx angular-cli-ghpages --dir=dist/my-github-action-app/browser
-    env:
-      CI: true
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v2  
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Build the Angular app
+      - name: Build Angular App
+        run: npm run build -- --prod
+
+      # Step 5: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        run: |
+          npx angular-cli-ghpages --dir=dist/my-github-action-app
+        env:
+          CI: true
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
