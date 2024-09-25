@@ -12,13 +12,13 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Repository
-        uses: actions/checkout@v2  
+        uses: actions/checkout@v2
 
       # Step 2: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: "20"
 
       # Step 3: Install dependencies
       - name: Install Dependencies
@@ -28,14 +28,14 @@ jobs:
       - name: Build Angular App
         run: npm run build
 
-      - name: copy index file to 404
-        run: cp dist/my-git-action-app/browser/index.html dist/my-git-action-app/browser/404.html  
-        
+      # - name: copy index file to 404
+      # run: cp dist/my-git-action-app/browser/index.html dist/my-git-action-app/browser/404.html
+
       # Step 5: Deploy to GitHub Pages
       - name: Deploy
         if: success()
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_TOKEN }}  # Ensure GH_TOKEN is set in Secrets
-          publish_dir: dist/my-git-action-app/browser  # Adjust this path as needed
-          enable_jekyll: true  # Set to false if you don't want Jekyll processing
+          github_token: ${{ secrets.GH_TOKEN }} # Ensure GH_TOKEN is set in Secrets
+          publish_dir: dist/my-git-action-app/browser # Adjust this path as needed
+          enable_jekyll: true # Set to false if you don't want Jekyll processing
