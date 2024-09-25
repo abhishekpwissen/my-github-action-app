@@ -28,8 +28,8 @@ jobs:
       - name: Build Angular App
         run: npm run build
 
-      # - name: copy index file to 404
-      # run: cp dist/my-git-action-app/browser/index.html dist/my-git-action-app/browser/404.html
+      - name: copy index file to 404
+        run: cp dist/my-git-action-app/browser/index.html dist/my-git-action-app/browser/404.html
 
       # Step 5: Deploy to GitHub Pages
       - name: Deploy
